@@ -9,7 +9,7 @@ if is_using_gpu:
 
 print("Got here")
 nlp = spacy.load("en_trf_bertbaseuncased_lg")
-#doc = nlp("Here is some text to encode.")
+doc = nlp("Here is some text to encode.")
 
 assert doc.tensor.shape == (7, 768)  # Always has one row per token
 doc._.trf_word_pieces_  # String values of the wordpieces
@@ -27,5 +27,8 @@ assert numpy.array_equal(span.tensor, doc.tensor[2:4])
 apple1 = nlp("Apple shares rose on the news.")
 apple2 = nlp("Apple sold fewer iPhones this quarter.")
 apple3 = nlp("Apple pie is delicious.")
+
+
+print(apple1.vector)
 print(apple1[0].similarity(apple2[0]))  # 0.73428553
 print(apple1[0].similarity(apple3[0]))  # 0.43365782
