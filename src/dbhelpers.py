@@ -8,16 +8,22 @@ import sqlite3
 class DBHelper():
     def __init__(self):
         self.conn = sqlite3.connect('../index.db')
-        self.c = conn.cursor()
+        self.c = self.conn.cursor()
 
     def createTable(self):
-        self.c.execute(
-            '''CREATE TABLE articles(id real, title text, body text)''')
+        try:
+            self.c.execute('''CREATE VIRTUAL TABLE articles USING fts5(id , title , body)''')
+            print("INDEX TABLE CREATED")
+        except:
+            print("Table already existed")
 
     def insertinTable(self, id, title, body):
-        self.c.execute(
-            "INSERT INTO stocks VALUES (1,'First Article','More Text')")
+        self.c.execute("INSERT INTO articles VALUES (?,?,?)", (id, title, body))
         self.conn.commit()
 
+    def queryTable(self, query):
+        self.c.execute("SELECT title FROM articles WHERE body MATCH '%s' ORDER BY RANK" % query)
+        return self.c.fetchall()
+
     def closeConn(self):
-        conn.close()
+        self.conn.close()
