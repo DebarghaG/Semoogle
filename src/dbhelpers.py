@@ -7,7 +7,7 @@ import sqlite3
 
 class DBHelper():
     def __init__(self):
-        self.conn = sqlite3.connect('../index.db')
+        self.conn = sqlite3.connect('../index.db', check_same_thread=False)
         self.c = self.conn.cursor()
 
     def createTable(self):
@@ -30,9 +30,8 @@ class DBHelper():
         return self.c.fetchall()
 
     def queryTableHighlight(self, query):
-        self.c.execute("SELECT highlight(articles, 2, ' ', '') FROM articles WHERE body MATCH '%s' ORDER BY bm25(articles)" % query)
+        self.c.execute("SELECT highlight(articles, 2, '<b>', '</b>') FROM articles WHERE body MATCH '%s' ORDER BY bm25(articles)" % query)
         return self.c.fetchall()
-
 
     def closeConn(self):
         self.conn.close()

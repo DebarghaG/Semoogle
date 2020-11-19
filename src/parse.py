@@ -4,7 +4,7 @@ Parses an XML dump of Wikipedia.
 """
 import gzip
 import time
-
+import json
 from dbhelpers import DBHelper
 
 
@@ -110,6 +110,7 @@ class Parser:
                 break
 
         print("\n\n")
+        return(json.dumps(result[0:5]))
 
     """
     Query the index at BM25
