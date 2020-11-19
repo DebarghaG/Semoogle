@@ -97,7 +97,52 @@ class Parser:
     Query the index
     """
     def queryIndex(self, query):
+        print("Searching for : "+query)
         start = time.time()
         result = self.dbobject.queryTable(query)
         stop = time.time()
         print("Fetched " + str(len(result)) + " results in "+ str(stop-start) )
+        for i in range(0,5):
+            try:
+                print(result[i][0])
+            except:
+                print("Sorry no results :(")
+                break
+
+        print("\n\n")
+
+    """
+    Query the index at BM25
+    """
+    def queryTableBM25(self, query):
+        print("Searching for : "+query)
+        start = time.time()
+        result = self.dbobject.queryTableBM25(query)
+        stop = time.time()
+        print("Fetched " + str(len(result)) + " results in "+ str(stop-start) )
+        for i in range(0,5):
+            try:
+                print(result[i][0])
+            except:
+                print("Sorry no results :(")
+                break
+
+        print("\n\n")
+
+    """
+    Query with highlight
+    """
+    def queryTableHighlight(self, query):
+        print("Searching for : "+query)
+        start = time.time()
+        result = self.dbobject.queryTableHighlight(query)
+        stop = time.time()
+        print("Fetched " + str(len(result)) + " results in "+ str(stop-start) )
+        for i in range(0,5):
+            try:
+                print(result[i][0])
+            except:
+                print("Sorry no results :(")
+                break
+
+        print("\n\n")

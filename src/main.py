@@ -5,4 +5,7 @@ if __name__ == '__main__':
     #parsewiki.parse()
     #parsewiki.vanillaQuery("Debargha")
     #parsewiki.buildIndex()
-    parsewiki.queryIndex("Sugar")
+    parsewiki.queryIndex("Capitalism is terrible")
+    parsewiki.queryIndex("Heart attack symptoms")
+    parsewiki.queryTableBM25("Capitalism is terrible")
+    parsewiki.queryTableHighlight("Sugar")

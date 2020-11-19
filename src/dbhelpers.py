@@ -25,5 +25,14 @@ class DBHelper():
         self.c.execute("SELECT title FROM articles WHERE body MATCH '%s' ORDER BY RANK" % query)
         return self.c.fetchall()
 
+    def queryTableBM25(self, query):
+        self.c.execute("SELECT title FROM articles WHERE body MATCH '%s' ORDER BY bm25(articles)" % query)
+        return self.c.fetchall()
+
+    def queryTableHighlight(self, query):
+        self.c.execute("SELECT highlight(articles, 2, ' ', '') FROM articles WHERE body MATCH '%s' ORDER BY bm25(articles)" % query)
+        return self.c.fetchall()
+
+
     def closeConn(self):
         self.conn.close()
