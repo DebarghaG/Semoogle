@@ -1,0 +1,218 @@
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Inter UI", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6c757d;
+  text-align: left;
+  background-color: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #212529;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.display-1 {
+  font-size: 6rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.display-2 {
+  font-size: 5.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.display-3 {
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+hr {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991.98px) .card-body {
+  padding: 1.125rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.5rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+user agent stylesheet div {
+  display: block;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+}
+
+.avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2px solid #f8f9fa;
+  background: #f8f9fa;
+  color: #fff;
+}
+
+.avatar.bg-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar.bg-primary i {
+  font-size: 1rem;
+}
+
+.avatar.avatar-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.avatar.avatar-sm {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .avatar.avatar-lg {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+
+.card .avatar {
+  border-color: #fff;
+  background: #fff;
+}
+
+.avatars {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.avatars>li {
+  display: inline-block;
+}
+
+.avatars>li+li {
+  margin-left: -0.75rem;
+}
+
+.bg-dark .avatar {
+  border-color: #343a40;
+}
+
+@media (min-width: 992px) {
+  .card-project, .card-team, .card-file {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.card-project .card-title, .card-kanban .card-title {
+  margin-bottom: 0.75rem;
+}
+
+.card-project .card-title:last-child, .card-kanban .card-title:last-child {
+  margin-bottom: 0;
+}
+
+.card-project .avatars {
+  margin-bottom: 2.25rem;
+}
+
+.card-team h5 {
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+}
