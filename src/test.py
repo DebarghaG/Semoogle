@@ -13,7 +13,7 @@ nltk.download('stopwords')
 
 parsewiki = Parser("../data/WestburyLab.Wikipedia.Corpus.txt")
 print("\n\n")
-titles = parsewiki.loadTitleVectors()[0:10]
+titles = parsewiki.loadTitleVectors()[0:1000]
 # print(titles)
 
 
@@ -50,10 +50,26 @@ print(document_embeddings)
 #most_similar(0, pairwise_similarities, 'Cosine Similarity')
 #most_similar(0, pairwise_differences, 'Euclidean Distance')
 
-
-
 while True:
     query = input("Please enter your search query : ")
+    query_embedding = sbert_model.encode(query)
+    maxcosineSimilarity = 0
+    document_id = 0
+    docfoundat = 0
+
+    for i in document_embeddings:
+        sim = cosine_similarity(query_embedding.reshape(1,-1), i.reshape(1,-1))
+        print(sim)
+        if sim[0][0] > maxcosineSimilarity:
+            mincosineSimilarity = sim[0][0]
+            docfoundat = document_id
+        document_id = document_id + 1
+
+    print("Most semantically similar to :")
+    print(maxcosineSimilarity)
+    print(titles[docfoundat])
+
+    print("\n")
     if query == "exit":
         break
     parsewiki.queryIndex(query)
