@@ -21,9 +21,14 @@ class DBHelper():
         self.c.execute("INSERT INTO articles VALUES (?,?,?)", (id, title, body))
         self.conn.commit()
 
+    def quickqueryTable(self, query):
+        self.c.execute("SELECT title FROM articles WHERE body MATCH '%s' ORDER BY RANK" % query)
+        return self.c.fetchmany(100)
+
     def queryTable(self, query):
         self.c.execute("SELECT title FROM articles WHERE body MATCH '%s' ORDER BY RANK" % query)
         return self.c.fetchall()
+
 
     def queryTableBM25(self, query):
         self.c.execute("SELECT title FROM articles WHERE body MATCH '%s' ORDER BY bm25(articles)" % query)

@@ -25,9 +25,11 @@ encoded_input2 = tokenizer(text2, return_tensors='pt')
 output2 = model(**encoded_input2)
 
 stop = time.time()
+#print(euclidean_distances(output1[0].detach(), output2[0].detach()))
 
-
+print(output2.logits)
 print(stop-start)
+
 
 
 print(output1[1])

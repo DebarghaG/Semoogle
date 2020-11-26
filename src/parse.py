@@ -38,6 +38,37 @@ class Parser:
         print("Read in " + str(articleid) + " documents")
         print("Took >> " + str(stop - start) + " seconds")
 
+
+    """
+    Reading all the article titles into memory.
+    """
+    def loadTitleVectors(self):
+        #self.dbobject.createTable()
+        start = time.time()
+        file = open(self.dump_location, 'r')
+        article = ""
+        articleid = 0
+        titles = []
+        while True:
+            line = file.readline()
+            if not line:
+                break
+            if line == "---END.OF.DOCUMENT---\n":
+                title = article.split("\n")[1]
+                titles.append(title)
+                articleid += 1
+                #self.dbobject.insertinTable(articleid, title, article)
+                article = ""
+                if articleid%10000 == 0:
+                    print(articleid)
+                continue
+            article = article + line
+        stop = time.time()
+        print(start-stop)
+        return titles
+
+
+
     """
     Sequential reads and find based on the Query
     Worst case performance is bad, just for baseline understanding
