@@ -47,13 +47,12 @@ sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
 start = time.time()
 document_embeddings = sbert_model.encode(documents_df['documents_cleaned'])
 stop = time.time()
-#print(stop - start)
-#print(document_embeddings)
+print(stop - start)
+# print(document_embeddings)
 #pairwise_similarities = cosine_similarity(document_embeddings)
 #pairwise_differences = euclidean_distances(document_embeddings)
 #most_similar(0, pairwise_similarities, 'Cosine Similarity')
 #most_similar(0, pairwise_differences, 'Euclidean Distance')
-
 while True:
     query = input("Please enter your search query : ")
     query_embedding = sbert_model.encode(query)
@@ -66,9 +65,9 @@ while True:
     print(dictionary.synonym(query))
 
     print("\n\nApproaching the problem with a SentenceTransformer :")
-
     cohesive_titles = []
     similarity_scores = []
+    start = time.time()
 
     for i in document_embeddings:
         sim = 1 - (cosine(query_embedding, i))
@@ -79,6 +78,14 @@ while True:
             maxcosineSimilarity = sim
             docfoundat = document_id
         document_id = document_id + 1
+        """
+        if document_id%100 ==0:
+            stop = time.time()
+            print(stop-start)
+            start= time.time()
+        """
+    stop = time.time()
+    print(stop - start)
 
     """
     print("Most semantically similar to :")
@@ -89,7 +96,7 @@ while True:
 
     print("You might be looking for :")
     list1, list2 = (list(t)
-    for t in zip(*sorted(zip(similarity_scores, titles), reverse=True)))
+                    for t in zip(*sorted(zip(similarity_scores, titles), reverse=True)))
     print(list2[:10])
     print("\n")
 

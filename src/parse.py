@@ -59,8 +59,8 @@ class Parser:
                 articleid += 1
                 #self.dbobject.insertinTable(articleid, title, article)
                 article = ""
-                if articleid%10000 == 0:
-                    print(articleid)
+                if articleid%100000 == 0:
+                    print("Read in " + str(articleid) + " documents")
                 continue
             article = article + line
         stop = time.time()
