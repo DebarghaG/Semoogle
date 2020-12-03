@@ -1,4 +1,4 @@
-# Sem-e-lastic
+# Semoogle
 
 A prototype semantic search engine.
 
