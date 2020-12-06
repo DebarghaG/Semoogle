@@ -61,10 +61,10 @@ while True:
     docfoundat = 0
     # print(query_embedding)
 
-    print("\n\nOntologically approaching the problem:")
+    print("\n\n Ontological Query Suggestions (For single word searches):")
     print(dictionary.synonym(query))
 
-    print("\n\nApproaching the problem with a SentenceTransformer :")
+    print("\n\n SentenceBERT based Article Suggestions (Works better for phrases and sentences) :")
     cohesive_titles = []
     similarity_scores = []
     start = time.time()
@@ -85,7 +85,7 @@ while True:
             start= time.time()
         """
     stop = time.time()
-    print(stop - start)
+    print("Operation took " + str(stop - start) + " Seconds")
 
     """
     print("Most semantically similar to :")
