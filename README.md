@@ -15,6 +15,10 @@ This process is slightly more complex.
 This involves running a FTS5 plugin to build a virtual table in the database.
 For all intents and purposes, since we're not using the db for concurrent writes,
 
+## Run the tests
+- cd src/
+- python3 test.py
+
 ## How to run API Server
 - cd src/
 - export FLASK_APP=main.py
